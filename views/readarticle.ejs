@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Hub</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+  font-family: 'Arial', sans-serif;
+
+  color: #000;
+  padding: 20px;
+  margin: 0;
+   background-image:url(f5c81c994e4eb7e684154ab50666ccea.jpg)  ;
+  background-size: cover; 
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+    }
+
+    h2{
+      text-align:center;
+      color: #007bff;
+     
+      margin-top: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background: transparent; /* Blue background for navigation links */
+      color: #fff;
+      margin-bottom: 20px;
+    }
+.blog{ text-align: center;}
+    .nav-links a {
+      text-align: center;
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      margin-top: 30px;
+      background-color: #fff; /* White background for the form */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      background-color: lightskyblue;
+      color: rgb(39, 39, 189);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: lightskyblue;
+    }
+
+    .card {
+      max-width: 1300px;
+      margin: auto;
+      margin-top: 20px;
+      background-color:rgb(243, 247, 249); /* White background for cards */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      color: #007bff;
+    }
+
+    .btn-read-more {
+      background-color: #287da7;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-read-more:hover {
+      background-color: #11767d;
+    }
+
+    .btn-like,
+    .btn-comment {
+      margin-left: 10px;
+    }
+
+    .topic {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card-content {
+      max-height: 200px; /* Set the maximum height for the content */
+      overflow: hidden;
+    }
+
+    .read-more-content {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-links">
+    <h2 class="blog">BLOG HUB</h2>
+    <div>
+      <a href="/interface"><i class="fa fa-arrow-circle-left" style="font-size:36px"></i></a>
+     
+    </div>
+  </div>
+
+    <% category.forEach(function(topic) { %>
+      <div class="topic">
+        <h2><%= topic.topic %></h2>
+      </div>
+      <% article.reverse().forEach(function(art) { %>
+        <% if (art.topic == topic._id && art.status == 1) { %>
+          <div class="card">
+            <div class="card-body">
+              <%= art.name %> (<%= art.date %>)
+              <h1 class="card-title"><%= art.title %></h1>
+              <div class="card-content">
+                <p><%= art.content.substring(0, 239) %></p>
+              </div>
+              <div class="read-more-content">
+                <p><%= art.content %></p>
+              </div>
+               <button class="btn btn-read-more" onclick="toggleReadMore(this)">Read more</button>
+              
+            </div>
+          </div>
+        <% } %>
+      <% }) %>
+    <% }) %>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function toggleReadMore(btn) {
+      var card = $(btn).closest('.card');
+      var content = card.find('.card-content');
+      var readMoreContent = card.find('.read-more-content');
+      
+      content.toggle();
+      readMoreContent.toggle();
+    }
+  </script>
+</body>
+</html>

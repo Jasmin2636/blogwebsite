@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .comment-container {
+            background-color: #f0f8ff; /* Light Blue */
+            border: 1px solid #b0e0e6; /* Powder Blue */
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .comment-name {
+            font-size: 18px;
+            color: #007bff; /* Royal Blue */
+        }
+
+        .comment-date {
+            color: #555;
+        }
+
+        .comment-text {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .delete-btn {
+            background-color: #dc3545; /* Red */
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333; /* Darker Red on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="comment-container">
+        <form method="post">
+            <textarea name="comment" id="comment" cols="30" rows="3" placeholder="Add a comment..."></textarea>
+            <button type="submit" class="btn btn-primary">Add comment</button>
+        </form>
+        <a href="/articles"><i class="fa fa-arrow-circle-left" style="font-size:36px"></i></a>
+        <%data.reverse().forEach(function(comment){%>
+            <% if (comment.id === req.params.id) { %>
+                <div class="comment-container">
+                    <div class="comment-header">
+                        <h5 class="comment-name"><%=comment.name%></h5>
+                        <h5 class="comment-date"><%=comment.date%></h5>
+                    </div>
+                    <p class="comment-text"><%=comment.comment%></p>
+                    
+                 <a href="/delete_comment/<%=comment._id%>" class="delete-btn">Delete</a>
+                </div>
+            <%}%>
+        <%})%>
+    </div>
+</body>
+</html>

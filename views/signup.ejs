@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration form</title>
+    <style>
+        body{
+            background-image: url(light.jpg);
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+        
+        form{
+          background-color:white;
+        text-align: center;
+        margin-top: 10%;
+        margin-left: 35%;
+        margin-right: 38%;
+        padding: 10px;
+        box-shadow: -8px -8px  rgba(0, 0, 0, 0.1),5px 5px 15px  rgba(5, 5, 5, 0.2);
+    background: transparent;
+    font-size: 20px;
+        }
+        h4{
+            color: red;
+            font-size: large;
+            text-align: center;
+        }
+        h5{
+            color: rgb(21, 21, 22);
+        }
+        a{
+           text-shadow: 3px;
+        }
+    </style>
+</head>
+<body >
+    <form method="post" align="center" >
+        <h3>Sign Up</h3>
+        <div>Name : <input type="text" id="name" name="name"/></div><br><br>
+        <div>Mail id : <input type="email" id="id" name="id"/></div><br><br>
+        <div>Password : <input type="password" id="password" name="password"/></div><br><br>
+   
+           
+         </div>
+        <h4><%=message%></h4>
+        <h5>Already a member?<a href="login">Login</a></h5>
+        <input type="submit" id="submit" name="submit" value="Create Account"/>
+    </form>
+   
+</body>
+</html> 

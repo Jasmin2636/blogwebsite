@@ -1,0 +1,331 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* Style for the main blog container */
+    .blog {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin: 20px;
+    }
+
+    /* Style for the left column */
+    .left {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    /* Style for each manager section */
+    .left > div {
+      background-color: #f2f2f2;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    /* Style for the content section */
+    .content {
+      margin-top: 10px;
+    }
+
+    /* Style for the article title */
+    .content h3 {
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    /* Style for user name */
+    .content h5 {
+      color: #555;
+    }
+
+    /* Style for the article date */
+    .content h6 {
+      color: #999;
+      margin-top: 5px;
+    }
+
+    /* Style for the "Read More" link */
+    .content .read-more {
+      text-decoration: none;
+      color: #3498db;
+      cursor: pointer;
+    }
+
+    /* Style for the "Read More" link on hover */
+    .content .read-more:hover {
+      text-decoration: underline;
+      color: #2980b9;
+    }
+
+    /* Style for the "Approve" and "Reject" links */
+    .content .action-links a {
+      text-decoration: none;
+      margin-right: 10px;
+      cursor: pointer;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    /* Style for the "Approve" link */
+    .content .action-links .approve {
+      color: #27ae60;
+      background-color: #e8f8ec;
+    }
+
+    /* Style for the "Reject" link */
+    .content .action-links .reject {
+      color: #c0392b;
+      background-color: #f9ebec;
+    }
+
+    .btn-read-more {
+      background-color: #287da7;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-read-more:hover {
+      background-color: #11767d;
+    }
+
+    .card-content {
+      max-height: 200px;
+      overflow: hidden;
+    }
+
+    .read-more-content {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="/logout">LOGOUT</a>
+  <div class="blog">
+    <div class="left sports">
+      <% category.forEach(function(manager) { %>
+        <div>
+          <h2><%= manager.name %></h2>
+        </div>
+        <div class="content">
+          <% article.reverse().forEach(function(art) { %>
+            <% if (art.topic == manager.topic) { %>
+              <div>
+                <h3><%= art.title %></h3>
+              </div>
+              <div>
+                <h5>User Name: <%= art.name %></h5>
+              </div>
+              <div>
+                <h6><%= art.date %></h6>
+              </div>
+              <div class="card-content">
+                <p><%= art.content.substring(0, 239) %></p>
+              </div>
+              <div class="read-more-content">
+                <p><%= art.content %></p>
+              </div>
+              <button class="btn-read-more" onclick="toggleReadMore(this, '<%= art._id %>')">Read more</button>
+             
+              <div class="action-links">
+                <a href="/approve_topic/<%=art._id%>" class="approve">Approve</a>
+                <a href="/reject_topic/<%=art._id%>" class="reject" onclick="return confirm('Are you sure you want to Reject?')">Reject</a>
+              </div>
+            <% } %>
+          <% }) %>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function toggleReadMore(btn, artId) {
+      var card = $(btn).closest('.content');
+      var content = card.find('.card-content');
+      var readMoreContent = card.find('.read-more-content');
+      
+      content.toggle();
+      readMoreContent.toggle();
+      
+      // Optionally, you can perform additional actions based on the artId
+      console.log('Clicked on Read More for article ID:', artId);
+    }
+  </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Hub</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      color: #000;
+      padding: 20px;
+      margin: 0;
+      background-image:url(123.jpg);
+      background-size: cover; 
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    h2 {
+      color: #007bff;
+      text-align:center;
+      margin-top: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background: transparent; /* Blue background for navigation links */
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .nav-links a {
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      margin-top: 30px;
+      background-color: #fff; /* White background for the form */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      background-color: lightskyblue;
+      color: rgb(39, 39, 189);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: lightskyblue;
+    }
+
+    .card {
+      max-width: 1300px;
+      margin: auto;
+      margin-top: 20px;
+      background-color:rgb(243, 247, 249); /* White background for cards */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      color: #007bff;
+    }
+
+    .btn-read-more {
+      background-color: #287da7;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-read-more:hover {
+      background-color: #11767d;
+    }
+
+    .btn-like,
+    .btn-comment {
+      margin-left: 10px;
+    }
+
+    .topic {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card-content {
+      max-height: 200px; /* Set the maximum height for the content */
+      overflow: hidden;
+    }
+
+    .read-more-content {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-links">
+    <a href="/logout">LOGOUT</a>
+    <div>
+      <a href="/interface"><i class="fa fa-arrow-circle-left" style="font-size:36px"></i></a>
+     
+    </div>
+  </div>
+
+    <% category.forEach(function(manager) { %>
+      <div class="topic">
+        <h2><%= manager.name %> PAGE</h2>
+      </div>
+      <div class="left">
+        <% article.reverse().forEach(function(art) { %>
+          <% if (art.topic == manager.topic) { %>
+            <div class="card">
+              <div class="card-body">
+                <h3><%= art.title %></h3>
+                <h5>Name: <%= art.name %></h5>
+                <h6>(<%= art.date %>)</h6>
+                <div class="card-content">
+                  <p><%= art.content.substring(0, 378) %></p>
+                </div>
+                <div class="read-more-content">
+                  <p><%= art.content %></p>
+                </div>
+                <button class="btn btn-read-more" onclick="toggleReadMore(this)">Read more</button>
+                <div class="action-links">
+                  <a href="/approve_topic/<%=art._id%>" class="approve" style="color: green;">Approve</a> /
+                  <a href="/reject_topic/<%=art._id%>" class="reject" style="color: red;" onclick="return confirm('Are you sure you want to Reject?')">  Reject</a>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% }) %>
+      </div>
+    <% }) %>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function toggleReadMore(btn) {
+      var card = $(btn).closest('.card');
+      var content = card.find('.card-content');
+      var readMoreContent = card.find('.read-more-content');
+      
+      content.toggle();
+      readMoreContent.toggle();
+    }
+  </script>
+</body>
+</html>

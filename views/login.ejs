@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Container for the form */
+        .login-form {
+            background-color: #fff;
+            width: 175px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Center the text */
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=email],
+        input[type=password] {
+            width:100%;
+            padding: 15px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 2px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 6px;
+        }
+
+        /* Set a style for the submit button */
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #045b3e;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h1>Sign In</h1>
+        <form method="post">
+            <input type="text" placeholder="Your name" id="name" name="name"><br><br>
+            <input type="email" placeholder="Mail ID" id="id" name="id"><br><br>
+            <input type="password" placeholder="Password" id="password" name="password"><br><br>
+            <input type="submit" id="submit" value="Log in now">   
+        </form>
+        <h4><%=message%></h4>
+        don't have an account?<a href=signup>sign up</a>
+      OR  <a href="/managerlogin">Manager</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .topic {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .add {
+            max-width: 870px;
+            margin: auto;
+            background-color: #d7d4d4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        h5 {
+            color: #007bff;
+        }
+
+        h1 {
+            color: #212529;
+        }
+
+        p {
+            color: #495057;
+        }
+
+        .dots {
+            display: inline;
+        }
+
+        .more {
+            display: none;
+        }
+
+        .btn-read-more {
+            color: #007bff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <% category.forEach(function(topic) { %>
+        <div class="topic">
+            <h5><%= topic.topic %></h5>
+        </div>
+        <% article.reverse().forEach(function(art) { %>
+            <% if (art.topic == topic._id) { %>
+                <div class="add">
+                  <h6><%= art.name %>(<%= art.date %>)</h6>
+                    <h1><%= art.title %></h1>
+                    <div>
+                        <p><%= art.content.substring(0, 200) %></p>
+                        <span class="dots">...</span>
+                        <span class="more"><%= art.content %></span>
+                    </div>
+                    <button onclick="toggleReadMore(this)" class="btn btn-read-more">
+                        Read more
+                    </button>
+                   
+                </div>
+            <% } %>
+        <% }) %>
+    <% }) %>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleReadMore(btn) {
+            var dots = btn.previousElementSibling.querySelector('.dots');
+            var moreText = btn.previousElementSibling.querySelector('.more');
+
+            if (dots.style.display === 'inline') {
+                dots.style.display = 'none';
+                btn.innerHTML = 'Read less';
+                moreText.style.display = 'inline';
+            } else {
+                dots.style.display = 'inline';
+                btn.innerHTML = 'Read more';
+                moreText.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

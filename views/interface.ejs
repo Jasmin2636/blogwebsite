@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>interface</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-image: url(media_11c2b6daf71a8253271e446c0a48787db9155c62c.webp);
+      background-size:cover;
+      background-position:center;
+      height: 105vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    #menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+  
+    li {
+      margin-right: 15px;
+    }
+  
+    a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s, color 0.3s;
+      width: 100%;
+      display: block;
+    }
+  
+    a:hover {
+      color: #007bff;
+      border-bottom: 2px solid #007bff;
+    }
+    .glow{
+      color: rgb(242, 239, 239);
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      padding-top: .5%;
+    }
+ 
+  </style>
+  
+  
+</head>
+<body >
+  <nav id="menu">
+    <ul>
+      <li><a href="/signup">Signup</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/readarticle">Read Arts</a></li>
+      <li><a href="/login">Add article</a></li> <!-- New link for reading articles -->
+    </ul>
+  </nav>
+  
+  <div class="glow">
+    <h2>Welcome to the Blog Hub</h2>
+  </div>
+  
+</body>
+</html>
+ 
